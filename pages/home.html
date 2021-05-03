@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Iris Prediction using Optimized Neural Network utilizing GA</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        Sepal Lenght:
+        <input name="sepal_lenght" required>
+        <br>
+        <br> Sepal Width:
+        <input name="sepal_width" required>
+        <br>
+        <br> Petal Lenght:
+        <input name="petal_lenght" required>
+        <br>
+		<br> Petal width:
+        <input name="petal_width" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+        {% for variable, value in original_input.items() %}
+            <b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <br>
+        <br> Predicted number of Class of Iris:
+           <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+</html>
